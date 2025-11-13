@@ -89,10 +89,10 @@ export default function Home() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-hidden">
       {/* Background Elements for Responsiveness */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(147,51,234,0.3),transparent_50%)] pointer-events-none"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.3),transparent_50%)] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(255,255,255,0.1),transparent_50%)] pointer-events-none"></div>
       {/* Floating Background Icons */}
       {backgroundIcons.map((Icon, index) => (
         <motion.div
@@ -121,161 +121,170 @@ export default function Home() {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="flex flex-col items-center justify-center min-h-screen px-4 py-20"
+        className="flex flex-col items-center justify-center min-h-screen px-4 py-20 bg-white/5 backdrop-blur-sm"
       >
-        <div className="text-center max-w-4xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-5xl md:text-7xl font-bold mb-4"
-          >
-            Bernardo Brüggemann
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="text-xl md:text-2xl text-gray-300 mb-8"
-          >
-            Web Developer
-          </motion.p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto w-full">
+          {/* Left Side: Information */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-            className="flex flex-wrap justify-center gap-4 mb-8"
-          ></motion.div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="flex flex-col justify-center space-y-8"
           >
-            <Button asChild>
-              <a href="mailto:bbbrugg@gmail.com">Email</a>
-            </Button>
-            <Button variant="outline" asChild>
-              <a
-                href="https://linkedin.com/in/bernardobruggemann"
-                target="_blank"
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+              className="flex flex-wrap justify-center md:justify-start gap-4"
+            >
+              <Button className="bg-purple-600 hover:bg-purple-700 text-white" asChild>
+                <a href="mailto:bbbrugg@gmail.com">
+                  <FaEnvelope className="text-lg md:text-xl inline mr-2" /> Email
+                </a>
+              </Button>
+              <Button variant="outline" className="border-purple-600 text-purple-300 hover:bg-purple-600 hover:text-white" asChild>
+                <a
+                  href="https://linkedin.com/in/bernardobruggemann"
+                  target="_blank"
+                >
+                  <SiLinkedin className="text-lg md:text-xl inline mr-2" /> LinkedIn
+                </a>
+              </Button>
+              <Button variant="outline" className="border-purple-600 text-purple-300 hover:bg-purple-600 hover:text-white" asChild>
+                <a href="https://github.com/BernardoBrugg" target="_blank">
+                  <SiGithub className="text-lg md:text-xl inline mr-2" /> GitHub
+                </a>
+              </Button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 1.0, duration: 0.8 }}
+            >
+              <Card className="bg-white/10 backdrop-blur-md border-white/20">
+                <CardHeader>
+                  <CardTitle className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
+                    <FaUser className="text-xl md:text-2xl" /> About Me
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="text-base md:text-lg leading-relaxed">
+                  <p>
+                    From the interior of Santa Catarina to pursuing Engineering at
+                    UFSC, I tread a path marked by resilience, curiosity, and
+                    commitment to technological innovation and the real impact of
+                    the projects I develop.
+                  </p>
+                  <p className="mt-4">
+                    As a Web Developer, I specialize in creating modern web applications using Next.js, Nest.js, and other cutting-edge technologies.
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+            >
+              <Card className="bg-white/10 backdrop-blur-md border-white/20">
+                <CardHeader>
+                  <CardTitle className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
+                    <FaCode className="text-xl md:text-2xl" /> Skills
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <p className="text-base md:text-lg">Skills: TypeScript, JavaScript, Django, Python, Next.js, NestJS, Pandas</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 1.4, duration: 0.8 }}
+              className="text-center"
+            >
+              <Button className="bg-purple-600 hover:bg-purple-700 text-white"
+                onClick={() => {
+                  const element = document.getElementById("projects");
+                  if (element) element.scrollIntoView({ behavior: "smooth" });
+                }}
               >
-                LinkedIn
-              </a>
-            </Button>
-            <Button variant="outline" asChild>
-              <a href="https://github.com/BernardoBrugg" target="_blank">
-                GitHub
-              </a>
-            </Button>
+                <FaCodeBranch className="text-lg md:text-xl inline mr-2" /> View My Projects
+              </Button>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Side: Name and Title */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="flex flex-col justify-center items-center md:items-end text-center md:text-right"
+          >
+            <motion.h1
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-purple-300"
+            >
+              Bernardo Brüggemann
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-8"
+            >
+              Software Engineer Intern
+            </motion.p>
           </motion.div>
         </div>
       </motion.section>
 
       {/* Projects Section */}
       <motion.section
+        id="projects"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="py-20 px-4"
+        className="px-0"
       >
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-2">
-            <FaCodeBranch /> Projects
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.url}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.2, duration: 0.5 }}
-              >
-                <Card className="bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-colors">
-                  <CardContent className="p-6 text-center">
-                    <iframe
-                      src={project.url}
-                      className="w-full h-64 md:h-80 mb-4 rounded border border-white/20"
-                      title={project.title}
-                    />
-                    <p className="text-lg font-medium mb-2">{project.title}</p>
-                    <p className="text-sm text-gray-400 mb-4">
-                      {project.description}
-                    </p>
-                    <Button asChild>
-                      <a href={project.url} target="_blank">
-                        Visit
-                      </a>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+        <div className="flex flex-col">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.url}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: index * 0.2, duration: 0.5 }}
+              className="relative w-full h-screen"
+            >
+              <iframe
+                src={project.url}
+                className="w-full h-full"
+                title={project.title}
+              />
+              <div className="absolute inset-0 flex flex-col justify-center items-center bg-black/50 backdrop-blur-sm">
+                <h3 className="text-4xl font-bold mb-4">{project.title}</h3>
+                <p className="text-lg mb-8 text-center max-w-2xl">{project.description}</p>
+                <Button asChild>
+                  <a href={project.url} target="_blank">
+                    Visit Project
+                  </a>
+                </Button>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </motion.section>
 
-      {/* About Section */}
+      {/* Contact Section */}
       <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="py-20 px-4"
-      >
-        <div className="max-w-4xl mx-auto">
-          <Card className="bg-white/10 backdrop-blur-md border-white/20">
-            <CardHeader>
-              <CardTitle className="text-3xl font-bold text-center flex items-center justify-center gap-2">
-                <FaUser /> About Me
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="text-lg leading-relaxed">
-              <p>
-                From the interior of Santa Catarina to pursuing Engineering at
-                UFSC, I tread a path marked by resilience, curiosity, and
-                commitment to technological innovation and the real impact of
-                the projects I develop.
-              </p>
-              <p className="mt-4">
-                As a Web Developer, I specialize in creating modern web applications using Next.js, Nest.js, and other cutting-edge technologies.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </motion.section>
-
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="py-20 px-4"
-      >
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-2">
-            <FaCode /> Skills
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="flex flex-col items-center p-6 bg-white/10 backdrop-blur-md rounded-lg border border-white/20 hover:bg-white/20 transition-colors"
-              >
-                <skill.icon className="text-4xl mb-2 text-purple-400" />
-                <span className="text-lg font-medium">{skill.name}</span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="py-20 px-4"
+        className="py-20 px-4 bg-white/5 backdrop-blur-sm"
       >
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-8 flex items-center justify-center gap-2">
@@ -305,6 +314,19 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </motion.section>
+
+      {/* Footer */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="py-10 px-4 bg-white/5 backdrop-blur-sm text-center"
+      >
+        <p>Instituto Tabuleiro © 2025 - Todos os direitos reservados</p>
+        <p>Organização não governamental dedicada à preservação do Parque Estadual da Serra do Tabuleiro</p>
+        <p>Gostou do site? Deixe seu feedback: devbebrugg@gmail.com</p>
+        <p>Developed by Bernardo Brüggemann | Engineering Student</p>
       </motion.section>
     </div>
   );
