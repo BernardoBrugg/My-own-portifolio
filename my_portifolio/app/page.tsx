@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Script from "next/script";
-import { SiLinkedin, SiGithub } from "react-icons/si";
 import {
   FaCode,
   FaEnvelope,
@@ -11,9 +10,29 @@ import {
   FaCodeBranch,
 } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import LiquidGlassView from "@/components/ui/liquid-glass";
+import {
+  SiTypescript,
+  SiJavascript,
+  SiDjango,
+  SiPython,
+  SiNextdotjs,
+  SiNestjs,
+  SiPandas,
+  SiLinkedin,
+  SiGithub,
+} from "react-icons/si";
 
 export default function Home() {
+  const skills = [
+    { name: "TypeScript", icon: SiTypescript },
+    { name: "JavaScript", icon: SiJavascript },
+    { name: "Django", icon: SiDjango },
+    { name: "Python", icon: SiPython },
+    { name: "Next.js", icon: SiNextdotjs },
+    { name: "NestJS", icon: SiNestjs },
+    { name: "Pandas", icon: SiPandas },
+  ];
   const projects = [
     {
       title: "Queue Theory",
@@ -61,12 +80,37 @@ export default function Home() {
           className="flex flex-col items-center justify-center min-h-screen px-4 py-20 bg-white/5 backdrop-blur-sm relative z-10"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto w-full">
-            {/* Left Side: Information */}
+            {/* Left Side: Name and Title */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="flex flex-col justify-center items-center md:items-start text-center md:text-left"
+            >
+              <motion.h1
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-purple-900 bg-clip-text text-transparent"
+              >
+                Bernardo Brüggemann
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                className="text-lg md:text-xl lg:text-2xl text-white mb-8"
+              >
+                Software Engineer Intern
+              </motion.p>
+            </motion.div>
+
+            {/* Right Side: Information */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex flex-col justify-center space-y-8"
+              className="flex flex-col justify-center space-y-8 items-center md:items-end text-center md:text-right"
             >
               <motion.div
                 initial={{ opacity: 0 }}
@@ -74,20 +118,13 @@ export default function Home() {
                 transition={{ delay: 0.8, duration: 0.5 }}
                 className="flex flex-wrap justify-center md:justify-start gap-4"
               >
-                <Button
-                  className="bg-purple-600 hover:bg-purple-700 text-white"
-                  asChild
-                >
+                <Button asChild>
                   <a href="mailto:bbbrugg@gmail.com">
                     <FaEnvelope className="text-lg md:text-xl inline mr-2" />{" "}
                     Email
                   </a>
                 </Button>
-                <Button
-                  variant="outline"
-                  className="border-purple-600 text-purple-300 hover:bg-purple-600 hover:text-white"
-                  asChild
-                >
+                <Button variant="outline" asChild>
                   <a
                     href="https://linkedin.com/in/bernardobruggemann"
                     target="_blank"
@@ -96,11 +133,7 @@ export default function Home() {
                     LinkedIn
                   </a>
                 </Button>
-                <Button
-                  variant="outline"
-                  className="border-purple-600 text-purple-300 hover:bg-purple-600 hover:text-white"
-                  asChild
-                >
+                <Button variant="outline" asChild>
                   <a href="https://github.com/BernardoBrugg" target="_blank">
                     <SiGithub className="text-lg md:text-xl inline mr-2" />{" "}
                     GitHub
@@ -113,46 +146,63 @@ export default function Home() {
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 1.0, duration: 0.8 }}
               >
-                <Card className="bg-white/10 backdrop-blur-md border-white/20">
-                  <CardHeader>
-                    <CardTitle className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
-                      <FaUser className="text-xl md:text-2xl" /> About Me
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-base md:text-lg leading-relaxed">
-                    <p>
-                      From the interior of Santa Catarina to pursuing
-                      Engineering at UFSC, I tread a path marked by resilience,
-                      curiosity, and commitment to technological innovation and
-                      the real impact of the projects I develop.
-                    </p>
-                    <p className="mt-4">
-                      As a Web Developer, I specialize in creating modern web
-                      applications using Next.js, Nest.js, and other
-                      cutting-edge technologies.
-                    </p>
-                  </CardContent>
-                </Card>
+                <LiquidGlassView style={{ padding: "20px", width: "100%" }}>
+                  <div className="text-center mb-4">
+
+                  </div>
+                  <div className="text-base md:text-lg leading-relaxed text-white">
+                    <p>Production Engineer | UFSC</p>
+                    <p> Eletronics Technician | IFSC</p>
+                  </div>
+                </LiquidGlassView>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+              >
+                <LiquidGlassView style={{ padding: "20px", width: "100%" }}>
+                  <div className="max-w-4xl mx-auto">
+                    <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-2">
+                      <FaCode /> Skills
+                    </h2>
+                    <div className="grid grid-cols-3 md:grid-cols- gap-8">
+                      {skills.map((skill, index) => (
+                        <motion.div
+                          key={skill.name}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ delay: index * 0.1, duration: 0.5 }}
+                          className="flex flex-col items-center"
+                        >
+                          <skill.icon className="text-4xl mb-2 text-purple-400" />
+                          <span className="text-lg font-medium">
+                            {skill.name}
+                          </span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                </LiquidGlassView>
               </motion.div>
 
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 1.2, duration: 0.8 }}
+                className="text-center"
               >
-                <Card className="bg-white/10 backdrop-blur-md border-white/20">
-                  <CardHeader>
-                    <CardTitle className="text-2xl md:text-3xl font-bold text-center flex items-center justify-center gap-2">
-                      <FaCode className="text-xl md:text-2xl" /> Skills
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-center">
-                    <p className="text-base md:text-lg">
-                      Skills: TypeScript, JavaScript, Django, Python, Next.js,
-                      NestJS, Pandas
-                    </p>
-                  </CardContent>
-                </Card>
+                <Button
+                  onClick={() => {
+                    const element = document.getElementById("projects");
+                    if (element) element.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  <FaCodeBranch className="text-lg md:text-xl inline mr-2" />{" "}
+                  See Projects in Development
+                </Button>
               </motion.div>
 
               <motion.div
@@ -160,43 +210,7 @@ export default function Home() {
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 1.4, duration: 0.8 }}
                 className="text-center"
-              >
-                <Button
-                  className="bg-purple-600 hover:bg-purple-700 text-white"
-                  onClick={() => {
-                    const element = document.getElementById("projects");
-                    if (element) element.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
-                  <FaCodeBranch className="text-lg md:text-xl inline mr-2" />{" "}
-                  View My Projects
-                </Button>
-              </motion.div>
-            </motion.div>
-
-            {/* Right Side: Name and Title */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="flex flex-col justify-center items-center md:items-end text-center md:text-right"
-            >
-              <motion.h1
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-                className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-purple-300"
-              >
-                Bernardo Brüggemann
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-                className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-8"
-              >
-                Software Engineer Intern
-              </motion.p>
+              ></motion.div>
             </motion.div>
           </div>
         </motion.section>
@@ -276,19 +290,12 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* Footer */}
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           className="py-10 px-4 bg-white/5 backdrop-blur-sm text-center relative z-10"
         >
-          <p>Instituto Tabuleiro © 2025 - Todos os direitos reservados</p>
-          <p>
-            Organização não governamental dedicada à preservação do Parque
-            Estadual da Serra do Tabuleiro
-          </p>
-          <p>Gostou do site? Deixe seu feedback: devbebrugg@gmail.com</p>
           <p>Developed by Bernardo Brüggemann | Engineering Student</p>
         </motion.section>
       </div>
