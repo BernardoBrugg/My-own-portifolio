@@ -58,9 +58,8 @@ export default function Home() {
         src="https://unpkg.com/@splinetool/viewer@1.11.2/build/spline-viewer.js"
         strategy="beforeInteractive"
       />
-      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-hidden">
-        {/* Spline Background */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none">
+      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-x-hidden">
+        <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
           <div
             dangerouslySetInnerHTML={{
               __html:
@@ -69,7 +68,6 @@ export default function Home() {
           />
         </div>
 
-        {/* Hero Section */}
         <motion.section
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -77,18 +75,18 @@ export default function Home() {
           className="flex flex-col items-center justify-center min-h-screen px-4 py-20 bg-white/5 backdrop-blur-sm relative z-10"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto w-full">
-            {/* Left Side: Name and Title */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="flex flex-col justify-center items-center md:items-start text-center md:text-left"
+              className="flex flex-col justify-center items-center md:items-start text-center md:text-left relative z-100"
             >
               <motion.h1
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
-                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-purple-900 bg-clip-text text-transparent break-words"
+                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-purple-900 bg-clip-text text-transparent pb-2"
+                style={{ lineHeight: '1.3' }}
               >
                 Bernardo Brüggemann
               </motion.h1>
@@ -102,7 +100,6 @@ export default function Home() {
               </motion.p>
             </motion.div>
 
-            {/* Right Side: Information */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -159,22 +156,41 @@ export default function Home() {
                     <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-2">
                       <FaCode /> Skills
                     </h2>
-                    <div className="grid grid-cols-3 md:grid-cols-4 gap-8">
-                      {skills.map((skill, index) => (
-                        <motion.div
-                          key={skill.name}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          whileHover={{ scale: 1.1 }}
-                          transition={{ delay: index * 0.1, duration: 0.5 }}
-                          className="flex flex-col items-center"
-                        >
-                          <skill.icon className="text-4xl mb-2 text-purple-400" />
-                          <span className="text-lg font-medium">
-                            {skill.name}
-                          </span>
-                        </motion.div>
-                      ))}
+                    <div className="flex flex-col items-center gap-8">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                        {skills.slice(0, 4).map((skill, index) => (
+                          <motion.div
+                            key={skill.name}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ delay: index * 0.1, duration: 0.5 }}
+                            className="flex flex-col items-center"
+                          >
+                            <skill.icon className="text-4xl mb-2 text-purple-400" />
+                            <span className="text-lg font-medium">
+                              {skill.name}
+                            </span>
+                          </motion.div>
+                        ))}
+                      </div>
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+                        {skills.slice(4, 7).map((skill, index) => (
+                          <motion.div
+                            key={skill.name}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            whileHover={{ scale: 1.1 }}
+                            transition={{ delay: (index + 4) * 0.1, duration: 0.5 }}
+                            className="flex flex-col items-center"
+                          >
+                            <skill.icon className="text-4xl mb-2 text-purple-400" />
+                            <span className="text-lg font-medium">
+                              {skill.name}
+                            </span>
+                          </motion.div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </LiquidGlassView>
@@ -206,7 +222,7 @@ export default function Home() {
                 setCurrentProjectIndex(0);
                 const element = document.getElementById("projects");
                 if (element) element.scrollIntoView({ behavior: "smooth" });
-                setTimeout(() => setShowNextButton(true), 1500);
+                setTimeout(() => setShowNextButton(true), 300);
               }}
             >
               <FaCodeBranch className="text-lg md:text-xl inline mr-2" /> See
@@ -215,7 +231,6 @@ export default function Home() {
           </motion.div>
         </motion.section>
 
-        {/* Projects Section */}
         <motion.section
           id="projects"
           initial={{ opacity: 0 }}
@@ -254,7 +269,6 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* Contact Section */}
         <motion.section
           id="contact"
           initial={{ opacity: 0 }}
