@@ -1,14 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 import Script from "next/script";
-import {
-  FaCode,
-  FaEnvelope,
-  FaPhone,
-  FaUser,
-  FaCodeBranch,
-} from "react-icons/fa";
+import { FaCode, FaEnvelope, FaPhone, FaCodeBranch } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import LiquidGlassView from "@/components/ui/liquid-glass";
 import {
@@ -24,6 +19,8 @@ import {
 } from "react-icons/si";
 
 export default function Home() {
+  const [showNextButton, setShowNextButton] = useState(false);
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const skills = [
     { name: "TypeScript", icon: SiTypescript },
     { name: "JavaScript", icon: SiJavascript },
@@ -91,7 +88,7 @@ export default function Home() {
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-purple-900 bg-clip-text text-transparent"
+                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-purple-900 bg-clip-text text-transparent break-words"
               >
                 Bernardo Brüggemann
               </motion.h1>
@@ -110,7 +107,7 @@ export default function Home() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex flex-col justify-center space-y-8 items-center md:items-end text-center md:text-right"
+              className="flex flex-col justify-center space-y-6 items-center text-center"
             >
               <motion.div
                 initial={{ opacity: 0 }}
@@ -146,14 +143,9 @@ export default function Home() {
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 1.0, duration: 0.8 }}
               >
-                <LiquidGlassView style={{ padding: "20px", width: "100%" }}>
-                  <div className="text-center mb-4">
-
-                  </div>
-                  <div className="text-base md:text-lg leading-relaxed text-white">
-                    <p>Production Engineer | UFSC</p>
-                    <p> Eletronics Technician | IFSC</p>
-                  </div>
+                <LiquidGlassView style={{ padding: "30px", width: "100%" }}>
+                  <p>Production Engineer | UFSC</p>
+                  <p> Eletronics Technician | IFSC</p>
                 </LiquidGlassView>
               </motion.div>
 
@@ -162,12 +154,12 @@ export default function Home() {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
               >
-                <LiquidGlassView style={{ padding: "20px", width: "100%" }}>
+                <LiquidGlassView style={{ padding: "30px", width: "100%" }}>
                   <div className="max-w-4xl mx-auto">
                     <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-2">
                       <FaCode /> Skills
                     </h2>
-                    <div className="grid grid-cols-3 md:grid-cols- gap-8">
+                    <div className="grid grid-cols-3 md:grid-cols-4 gap-8">
                       {skills.map((skill, index) => (
                         <motion.div
                           key={skill.name}
@@ -191,28 +183,36 @@ export default function Home() {
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                transition={{ delay: 1.2, duration: 0.8 }}
-                className="text-center"
-              >
-                <Button
-                  onClick={() => {
-                    const element = document.getElementById("projects");
-                    if (element) element.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
-                  <FaCodeBranch className="text-lg md:text-xl inline mr-2" />{" "}
-                  See Projects in Development
-                </Button>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
                 transition={{ delay: 1.4, duration: 0.8 }}
                 className="text-center"
               ></motion.div>
             </motion.div>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            animate={{ y: [0, -10, 0] }}
+            transition={{
+              delay: 1.2,
+              duration: 0.8,
+              repeat: Infinity,
+              repeatDelay: 0.5,
+            }}
+            className="absolute left-1/2 transform -translate-x-1/2 bottom-10"
+          >
+            <Button
+              onClick={() => {
+                setCurrentProjectIndex(0);
+                const element = document.getElementById("projects");
+                if (element) element.scrollIntoView({ behavior: "smooth" });
+                setTimeout(() => setShowNextButton(true), 1500);
+              }}
+            >
+              <FaCodeBranch className="text-lg md:text-xl inline mr-2" /> See
+              Projects in Development
+            </Button>
+          </motion.div>
         </motion.section>
 
         {/* Projects Section */}
@@ -227,6 +227,7 @@ export default function Home() {
             {projects.map((project, index) => (
               <motion.div
                 key={project.url}
+                id={`project-${index}`}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: index * 0.2, duration: 0.5 }}
@@ -255,6 +256,7 @@ export default function Home() {
 
         {/* Contact Section */}
         <motion.section
+          id="contact"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -298,6 +300,36 @@ export default function Home() {
         >
           <p>Developed by Bernardo Brüggemann | Engineering Student</p>
         </motion.section>
+
+        {showNextButton && (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50"
+          >
+            <Button
+              onClick={() => {
+                if (currentProjectIndex === projects.length - 1) {
+                  const element = document.getElementById("contact");
+                  if (element) element.scrollIntoView({ behavior: "smooth" });
+                  setShowNextButton(false);
+                } else {
+                  const nextIndex = (currentProjectIndex + 1) % projects.length;
+                  setCurrentProjectIndex(nextIndex);
+                  const element = document.getElementById(
+                    `project-${nextIndex}`
+                  );
+                  if (element) element.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
+              {currentProjectIndex === projects.length - 1
+                ? "Show Contact Information"
+                : "Next Project"}
+            </Button>
+          </motion.div>
+        )}
       </div>
     </>
   );
