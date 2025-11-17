@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import PageRouter from "./page-router";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,7 +25,7 @@ export default function RootLayout({
           src="https://unpkg.com/@splinetool/viewer@1.11.2/build/spline-viewer.js"
           strategy="beforeInteractive"
         />
-        {children}
+        <PageRouter />
       </body>
     </html>
   );
