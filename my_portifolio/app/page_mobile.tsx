@@ -30,12 +30,14 @@ export default function Home() {
     {
       title: "Queue Theory",
       url: "https://queuetheory.vercel.app/",
-      description: "Interactive web app for exploring queue theory concepts and simulations.",
+      description:
+        "Interactive web app for exploring queue theory concepts and simulations.",
     },
     {
       title: "Instituto Tabuleiro",
       url: "https://institutotabuleiro.vercel.app/",
-      description: "Official website featuring educational programs and resources.",
+      description:
+        "Official website featuring educational programs and resources.",
     },
     {
       title: "Marina Morais Portfolio",
@@ -79,7 +81,10 @@ export default function Home() {
             </Button>
             <div className="flex gap-2">
               <Button size="sm" variant="outline" asChild className="flex-1">
-                <a href="https://linkedin.com/in/bernardobruggemann" target="_blank">
+                <a
+                  href="https://linkedin.com/in/bernardobruggemann"
+                  target="_blank"
+                >
                   <SiLinkedin className="mr-1" /> LinkedIn
                 </a>
               </Button>
@@ -98,7 +103,9 @@ export default function Home() {
           >
             <LiquidGlassView style={{ padding: "16px", width: "100%" }}>
               <p className="text-sm text-center">Production Engineer | UFSC</p>
-              <p className="text-sm text-center">Electronics Technician | IFSC</p>
+              <p className="text-sm text-center">
+                Electronics Technician | IFSC
+              </p>
             </LiquidGlassView>
           </motion.div>
 
@@ -139,7 +146,9 @@ export default function Home() {
         transition={{ duration: 0.8 }}
         className="px-6 py-12 relative z-10"
       >
-        <h2 className="text-2xl font-bold text-center mb-8">Featured Projects</h2>
+        <h2 className="text-2xl font-bold text-center mb-8">
+          Featured Projects
+        </h2>
         <div className="space-y-6">
           {projects.map((project, index) => (
             <motion.div
@@ -163,7 +172,11 @@ export default function Home() {
                 {project.description}
               </p>
               <Button size="sm" asChild className="w-full">
-                <a href={project.url} target="_blank" className="flex items-center justify-center">
+                <a
+                  href={project.url}
+                  target="_blank"
+                  className="flex items-center justify-center"
+                >
                   <FaExternalLinkAlt className="mr-2" /> Visit Project
                 </a>
               </Button>
@@ -195,12 +208,19 @@ export default function Home() {
           </div>
           <div className="space-y-3">
             <Button size="sm" asChild className="w-full">
-              <a href="mailto:bbbrugg@gmail.com" className="flex items-center justify-center">
+              <a
+                href="mailto:bbbrugg@gmail.com"
+                className="flex items-center justify-center"
+              >
                 <FaEnvelope className="mr-2" /> Send Email
               </a>
             </Button>
             <Button size="sm" variant="outline" asChild className="w-full">
-              <a href="https://linkedin.com/in/bernardobruggemann" target="_blank" className="flex items-center justify-center">
+              <a
+                href="https://linkedin.com/in/bernardobruggemann"
+                target="_blank"
+                className="flex items-center justify-center"
+              >
                 <SiLinkedin className="mr-2" /> LinkedIn
               </a>
             </Button>
