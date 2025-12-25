@@ -123,10 +123,6 @@ my_portifolio/
 
 Production Engineer student at UFSC | Electronics Technician from IFSC | Software Engineer Intern
 
-## 📄 License
-
-This project is open source and available under the MIT License.
-
 ---
 
 Developed with ❤️ by Bernardo Brüggemann | Engineering Student
