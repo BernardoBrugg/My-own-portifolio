@@ -4,47 +4,10 @@ import { motion } from "framer-motion";
 import { FaCode, FaEnvelope, FaPhone, FaExternalLinkAlt } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import LiquidGlassView from "@/components/ui/liquid-glass";
-import {
-  SiTypescript,
-  SiJavascript,
-  SiDjango,
-  SiPython,
-  SiNextdotjs,
-  SiNestjs,
-  SiPandas,
-  SiLinkedin,
-  SiGithub,
-} from "react-icons/si";
+import { SiLinkedin, SiGithub } from "react-icons/si";
+import { skills, projects, contactInfo } from "@/data/portfolio";
 
 export default function Home() {
-  const skills = [
-    { name: "TypeScript", icon: SiTypescript },
-    { name: "JavaScript", icon: SiJavascript },
-    { name: "Django", icon: SiDjango },
-    { name: "Python", icon: SiPython },
-    { name: "Next.js", icon: SiNextdotjs },
-    { name: "NestJS", icon: SiNestjs },
-    { name: "Pandas", icon: SiPandas },
-  ];
-  const projects = [
-    {
-      title: "Queue Theory",
-      url: "https://queuetheory.vercel.app/",
-      description:
-        "Interactive web app for exploring queue theory concepts and simulations.",
-    },
-    {
-      title: "Instituto Tabuleiro",
-      url: "https://institutotabuleiro.vercel.app/",
-      description:
-        "Official website featuring educational programs and resources.",
-    },
-    {
-      title: "Marina Morais Portfolio",
-      url: "https://marinamoraisphportifolio.vercel.app/",
-      description: "Elegant portfolio website showcasing Marina Morais' work.",
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-x-hidden">
@@ -75,21 +38,21 @@ export default function Home() {
             className="flex flex-col gap-3"
           >
             <Button size="sm" asChild className="w-full">
-              <a href="mailto:bbbrugg@gmail.com">
+              <a href={`mailto:${contactInfo.email}`}>
                 <FaEnvelope className="mr-2" /> Email
               </a>
             </Button>
             <div className="flex gap-2">
               <Button size="sm" variant="outline" asChild className="flex-1">
                 <a
-                  href="https://linkedin.com/in/bernardobruggemann"
+                  href={contactInfo.linkedin}
                   target="_blank"
                 >
                   <SiLinkedin className="mr-1" /> LinkedIn
                 </a>
               </Button>
               <Button size="sm" variant="outline" asChild className="flex-1">
-                <a href="https://github.com/BernardoBrugg" target="_blank">
+                <a href={contactInfo.github} target="_blank">
                   <SiGithub className="mr-1" /> GitHub
                 </a>
               </Button>
@@ -199,17 +162,17 @@ export default function Home() {
           <div className="space-y-4 mb-6">
             <div className="flex items-center justify-center gap-2 text-sm">
               <FaPhone className="text-purple-400" />
-              <span>48 991063196</span>
+              <span>{contactInfo.phone}</span>
             </div>
             <div className="flex items-center justify-center gap-2 text-sm">
               <FaEnvelope className="text-purple-400" />
-              <span>bbbrugg@gmail.com</span>
+              <span>{contactInfo.email}</span>
             </div>
           </div>
           <div className="space-y-3">
             <Button size="sm" asChild className="w-full">
               <a
-                href="mailto:bbbrugg@gmail.com"
+                href={`mailto:${contactInfo.email}`}
                 className="flex items-center justify-center"
               >
                 <FaEnvelope className="mr-2" /> Send Email
@@ -217,7 +180,7 @@ export default function Home() {
             </Button>
             <Button size="sm" variant="outline" asChild className="w-full">
               <a
-                href="https://linkedin.com/in/bernardobruggemann"
+                href={contactInfo.linkedin}
                 target="_blank"
                 className="flex items-center justify-center"
               >
