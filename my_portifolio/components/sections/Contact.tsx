@@ -13,7 +13,7 @@ export function Contact() {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="py-20 px-4 bg-white/5 backdrop-blur-sm relative z-10"
+      className="py-20 px-4 relative z-10"
     >
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-8 flex items-center justify-center gap-2">

@@ -17,7 +17,7 @@ export function Hero({ onSeeProjects }: HeroProps) {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="flex flex-col items-center justify-center min-h-screen px-4 py-20 bg-white/5 backdrop-blur-sm relative z-10"
+      className="flex flex-col items-center justify-center min-h-screen px-4 py-20 relative z-10"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto w-full">
         <motion.div
@@ -83,18 +83,20 @@ export function Hero({ onSeeProjects }: HeroProps) {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 1.0, duration: 0.8 }}
+            whileHover={{ scale: 1.05, y: -5 }}
+            transition={{ type: "spring", stiffness: 300, damping: 15 }}
           >
             <LiquidGlassView style={{ padding: "30px", width: "100%" }}>
-              <p>Production Engineer | UFSC</p>
-              <p> Eletronics Technician | IFSC</p>
+              <p>Production Engineering Student | UFSC</p>
+              <p>Electronics Technician | IFSC</p>
             </LiquidGlassView>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
             <LiquidGlassView style={{ padding: "30px", width: "100%" }}>
               <div className="max-w-4xl mx-auto">
@@ -165,8 +167,8 @@ export function Hero({ onSeeProjects }: HeroProps) {
         <Button
           onClick={onSeeProjects}
         >
-          <FaCodeBranch className="text-lg md:text-xl inline mr-2" /> See
-          Projects in Development
+          <FaCodeBranch className="text-lg md:text-xl inline mr-2" /> 
+          Check Out Projects in Development
         </Button>
       </motion.div>
     </motion.section>

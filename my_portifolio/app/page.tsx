@@ -9,6 +9,7 @@ import { Projects } from "@/components/sections/Projects";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 import { projects } from "@/data/portfolio";
+import DeformingBackground from "@/components/DeformingBackground";
 
 
 export default function Home() {
@@ -23,13 +24,19 @@ export default function Home() {
         strategy="beforeInteractive"
       />
       <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-x-hidden">
-        <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
+        {/* Spline Background Layer */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
           <div
             dangerouslySetInnerHTML={{
               __html:
                 '<spline-viewer url="https://prod.spline.design/derKFBn6Xh71KD1J/scene.splinecode"></spline-viewer>',
             }}
           />
+        </div>
+        
+        {/* Deforming FG Layer */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-10">
+           <DeformingBackground />
         </div>
 
         <Hero 

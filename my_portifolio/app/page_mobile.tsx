@@ -65,7 +65,7 @@ export default function Home() {
             transition={{ delay: 0.6, duration: 0.6 }}
           >
             <LiquidGlassView style={{ padding: "16px", width: "100%" }}>
-              <p className="text-sm text-center">Production Engineer | UFSC</p>
+              <p className="text-sm text-center">Production Engineering Student | UFSC</p>
               <p className="text-sm text-center">
                 Electronics Technician | IFSC
               </p>
