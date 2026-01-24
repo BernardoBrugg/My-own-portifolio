@@ -15,7 +15,7 @@ export const ReactiveElement = ({
   children,
   strength = 15,
   className = "",
-  as: Component = motion.div,
+  as: Component = "div",
 }: ReactiveElementProps) => {
   const { x, y } = useMouse();
   const ref = useRef<HTMLDivElement>(null);
