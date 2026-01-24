@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaCode, FaEnvelope, FaPhone, FaExternalLinkAlt } from "react-icons/fa";
+import { FaCode, FaEnvelope, FaExternalLinkAlt } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import LiquidGlassView from "@/components/ui/liquid-glass";
 import { SiLinkedin, SiGithub } from "react-icons/si";
 import { skills, projects, contactInfo } from "@/data/portfolio";
 import DeformingBackground from "@/components/DeformingBackground";
 import { ReactiveElement } from "@/components/ui/ReactiveElement";
+import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
 
@@ -169,52 +170,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <motion.section
-        id="contact"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="px-6 py-12 bg-white/5 backdrop-blur-sm relative z-10"
-      >
-        <div className="max-w-sm mx-auto text-center">
-          <h2 className="text-xl font-bold mb-6 flex items-center justify-center gap-2">
-            <FaEnvelope /> Contact
-          </h2>
-          <div className="space-y-4 mb-6">
-            <div className="flex items-center justify-center gap-2 text-sm">
-              <FaPhone className="text-purple-400" />
-              <span>{contactInfo.phone}</span>
-            </div>
-            <div className="flex items-center justify-center gap-2 text-sm">
-              <FaEnvelope className="text-purple-400" />
-              <span>{contactInfo.email}</span>
-            </div>
-          </div>
-          <div className="space-y-3">
-            <ReactiveElement strength={30}>
-              <Button size="sm" asChild className="w-full">
-                <a
-                  href={`mailto:${contactInfo.email}`}
-                  className="flex items-center justify-center"
-                >
-                  <FaEnvelope className="mr-2" /> Send Email
-                </a>
-              </Button>
-            </ReactiveElement>
-            <ReactiveElement strength={30}>
-              <Button size="sm" variant="outline" asChild className="w-full">
-                <a
-                  href={contactInfo.linkedin}
-                  target="_blank"
-                  className="flex items-center justify-center"
-                >
-                  <SiLinkedin className="mr-2" /> LinkedIn
-                </a>
-              </Button>
-            </ReactiveElement>
-          </div>
-        </div>
-      </motion.section>
+      <Contact />
 
       <motion.footer
         initial={{ opacity: 0 }}
