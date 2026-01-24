@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import PageRouter from "./page-router";
+import { MouseProvider } from "@/components/providers/MouseProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,7 +25,9 @@ export default function RootLayout({
           src="https://unpkg.com/@splinetool/viewer@1.11.2/build/spline-viewer.js"
           strategy="beforeInteractive"
         />
-        <PageRouter />
+        <MouseProvider>
+          <PageRouter />
+        </MouseProvider>
       </body>
     </html>
   );

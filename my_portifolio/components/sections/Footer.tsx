@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ReactiveElement } from "@/components/ui/ReactiveElement";
 
 export function Footer() {
   return (
@@ -10,7 +11,9 @@ export function Footer() {
       transition={{ duration: 0.8 }}
       className="py-10 px-4 text-center relative z-10"
     >
-      <p>Developed by Bernardo Brüggemann | Engineering Student</p>
+      <ReactiveElement strength={5}>
+        <p>Developed by Bernardo Brüggemann | Engineering Student</p>
+      </ReactiveElement>
     </motion.section>
   );
 }
