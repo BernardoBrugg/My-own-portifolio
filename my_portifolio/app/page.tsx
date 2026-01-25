@@ -10,6 +10,7 @@ import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 import { projects } from "@/data/portfolio";
 import DeformingBackground from "@/components/DeformingBackground";
+import { GalaxyEntranceWrapper } from "@/components/ui/GalaxyEntranceWrapper";
 
 
 export default function Home() {
@@ -39,20 +40,22 @@ export default function Home() {
            <DeformingBackground />
         </div>
 
-        <Hero 
-          onSeeProjects={() => {
-            setCurrentProjectIndex(0);
-            const element = document.getElementById("projects");
-            if (element) element.scrollIntoView({ behavior: "smooth" });
-            setTimeout(() => setShowNextButton(true), 300);
-          }} 
-        />
+        <GalaxyEntranceWrapper>
+            <Hero 
+            onSeeProjects={() => {
+                setCurrentProjectIndex(0);
+                const element = document.getElementById("projects");
+                if (element) element.scrollIntoView({ behavior: "smooth" });
+                setTimeout(() => setShowNextButton(true), 300);
+            }} 
+            />
 
-        <Projects />
+            <Projects />
 
-        <Contact />
+            <Contact />
 
-        <Footer />
+            <Footer />
+        </GalaxyEntranceWrapper>
 
         {showNextButton && (
           <motion.div
