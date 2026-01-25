@@ -10,7 +10,6 @@ import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 import { projects } from "@/data/portfolio";
 import DeformingBackground from "@/components/DeformingBackground";
-import { GalaxyEntranceWrapper } from "@/components/ui/GalaxyEntranceWrapper";
 
 
 export default function Home() {
@@ -24,7 +23,12 @@ export default function Home() {
         src="https://unpkg.com/@splinetool/viewer@1.11.2/build/spline-viewer.js"
         strategy="beforeInteractive"
       />
-      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-x-hidden">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-x-hidden"
+      >
         {/* Spline Background Layer */}
         <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
           <div
@@ -40,22 +44,20 @@ export default function Home() {
            <DeformingBackground />
         </div>
 
-        <GalaxyEntranceWrapper>
-            <Hero 
-            onSeeProjects={() => {
-                setCurrentProjectIndex(0);
-                const element = document.getElementById("projects");
-                if (element) element.scrollIntoView({ behavior: "smooth" });
-                setTimeout(() => setShowNextButton(true), 300);
-            }} 
-            />
+        <Hero 
+          onSeeProjects={() => {
+            setCurrentProjectIndex(0);
+            const element = document.getElementById("projects");
+            if (element) element.scrollIntoView({ behavior: "smooth" });
+            setTimeout(() => setShowNextButton(true), 300);
+          }} 
+        />
 
-            <Projects />
+        <Projects />
 
-            <Contact />
+        <Contact />
 
-            <Footer />
-        </GalaxyEntranceWrapper>
+        <Footer />
 
         {showNextButton && (
           <motion.div
@@ -86,7 +88,7 @@ export default function Home() {
             </Button>
           </motion.div>
         )}
-      </div>
+      </motion.div>
     </>
   );
 }

@@ -2,33 +2,46 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Script from "next/script";
 import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/sections/Hero";
 import { Projects } from "@/components/sections/Projects";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 import { projects } from "@/data/portfolio";
+import DeformingBackground from "@/components/DeformingBackground";
+
 
 export default function Home() {
   const [showNextButton, setShowNextButton] = useState(false);
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
 
   return (
-      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-x-hidden">    
-          <Hero 
-            onSeeProjects={() => {
-              setCurrentProjectIndex(0);
-              const element = document.getElementById("projects");
-              if (element) element.scrollIntoView({ behavior: "smooth" });
-              setTimeout(() => setShowNextButton(true), 300);
-            }} 
-          />
+    <>
+      <Script
+        type="module"
+        src="https://unpkg.com/@splinetool/viewer@1.11.2/build/spline-viewer.js"
+        strategy="beforeInteractive"
+      />
+      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-x-hidden">
+        <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-10">
+           <DeformingBackground />
+        </div>
 
-          <Projects />
+        <Hero 
+          onSeeProjects={() => {
+            setCurrentProjectIndex(0);
+            const element = document.getElementById("projects");
+            if (element) element.scrollIntoView({ behavior: "smooth" });
+            setTimeout(() => setShowNextButton(true), 300);
+          }} 
+        />
 
-          <Contact />
+        <Projects />
 
-          <Footer />
+        <Contact />
+
+        <Footer />
 
         {showNextButton && (
           <motion.div
@@ -60,5 +73,6 @@ export default function Home() {
           </motion.div>
         )}
       </div>
+    </>
   );
 }
