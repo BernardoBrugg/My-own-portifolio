@@ -64,7 +64,6 @@ const ParticleSystem = () => {
     const { clock } = state;
     if (shaderMaterial.current) {
         shaderMaterial.current.uniforms.uTime.value = clock.getElapsedTime();
-        // Smoothly interpolate mouse uniform
         shaderMaterial.current.uniforms.uMouse.value.lerp(mouse.current, 0.1);
     }
   });

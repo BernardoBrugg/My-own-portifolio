@@ -29,7 +29,6 @@ export default function Home() {
         transition={{ duration: 1.5 }}
         className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white relative overflow-x-hidden"
       >
-        {/* Spline Background Layer */}
         <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-0">
           <div
             dangerouslySetInnerHTML={{
@@ -38,8 +37,6 @@ export default function Home() {
             }}
           />
         </div>
-        
-        {/* Deforming FG Layer */}
         <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-10">
            <DeformingBackground />
         </div>

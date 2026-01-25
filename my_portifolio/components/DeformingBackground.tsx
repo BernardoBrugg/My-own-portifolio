@@ -34,8 +34,6 @@ const DeformingPlane = () => {
 
         window.addEventListener('mousemove', handleMouseMove);
         window.addEventListener('resize', handleResize);
-        
-        // Initial set
         handleResize();
 
         return () => {
@@ -79,7 +77,7 @@ const DeformingPlane = () => {
         void main() {
             float alpha = 0.2 + vElevation * 0.5;
             vec3 color = vec3(0.5, 0.2, 0.9) + vElevation * 0.2;
-            gl_FragColor = vec4(color, alpha * 0.2);
+            gl_FragColor = vec4(color, alpha * 0.4);
         }
     `;
 
